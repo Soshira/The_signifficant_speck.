@@ -1,1 +1,3 @@
-Hello, beautfiul boys. The Makefile is for me, so you may ignore it.
+Hello, beautfiul boys. The Makefile is for me, so you may ignore it. 
+  All of our animation is in the main.c file.
+  
