@@ -88,3 +88,54 @@ void drawCircleOutline(float centerX, float centerY, float radius, float segment
             }
         glEnd();
 }
+
+
+// Create Text
+void drawText(float x, float y, void* font, const std:: string& s) {
+    glRasterPos2f(x,y);
+    for(char c: s) glutBitMapCharacter(font,c); 
+}
+
+// Draw random stars
+void initStars() {
+    stars.clear();
+    stars.reserve(300);
+    for(int i = 0; i<300; i++) {
+        stars.pushback({
+            frand(-1.4f, 1.4f), frand(-1.0f, 1.0f), frand(0.8f, 3.0f), frand(1.0f, 3.0f)
+        });
+    }
+}
+
+void initPlanet() {
+    planets.clear();
+    for(int i = 0; i < 4; i++) {
+        Planet p;
+        p.x = frand(1.5f, 3.5f) + i * 1.6f;
+        p.y = frand(-0.4f, 0.5f);
+        p.r = frand(0.08f, 0.16f);
+        p.speed = frand(0.08f, 0.18f);
+        p.cr = frand(0.2f, 0.8f);
+        p.cg = frand(0.2f, 0.8f);
+        p.cb = frand(0.3f, 0.9f);
+        planets.push_back(p);
+
+    }
+}
+
+void updateStars() {
+}
+
+
+void updatePlanets() {
+}
+
+
+
+
+
+
+
+
+
+
