@@ -123,11 +123,48 @@ void initPlanet() {
     }
 }
 
-void updateStars() {
+
+// STARFFIELD EFFECT -> zooming through the space in hyperspeed.
+void updateStars(float deltaTime, float warpFactor) {
+    for (auto& currentStar : starCollection) {
+        // Move the star to the left based on its individual speed, the time elapsed, and the warp multiplier
+        currentStar.xPosition -= currentStar.movementSpeed * deltaTime * warpFactor;
+
+        // if moved pass the left boundary
+        if (currentStar.xPosition < -1.5f) {
+            // Reset the star to the right
+            currentStar.xPosition = 1.5f;
+
+            // Randomize the vertical position, speed(maintaining parallax depft), size of stars
+            currentStar.yPosition = getRandomFloat(-1.0f, 1.0f);
+            currentStar.movementSpeed = getRandomFloat(1.2f, 4.2f);
+            currentStar.visualSize = getRandomFloat(1.0f, 3.0f);
+        }
+    }
 }
 
 
-void updatePlanets() {
+
+void updatePlanets(float deltaTime, float warpMultiplier) {
+    for (auto& planet : planets) {
+        // Move the planet to the left based on its speed and time elapsed
+        planet.positionX -= planet.speed * deltaTime * warpMultiplier * 0.75f;
+
+        // Check if the planet has moved off the left side of the screen
+        if (planet.positionX < -1.8f) {
+            // Respawn the planet on the right with new random attributes
+            planet.positionX = getRandomFloat(1.4f, 4.8f);
+            planet.positionY = getRandomFloat(-0.50f, 0.58f);
+            planet.radius    = getRandomFloat(0.06f, 0.18f);
+            planet.speed     = getRandomFloat(0.10f, 0.24f);
+            
+            // Randomize the Planet Colors (Red, Green, Blue)
+            planet.colorRed   = getRandomFloat(0.25f, 0.95f);
+            planet.colorGreen = getRandomFloat(0.20f, 0.80f);
+            planet.colorBlue  = getRandomFloat(0.30f, 0.95f);
+        }
+    }
+
 }
 
 
