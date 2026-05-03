@@ -392,18 +392,6 @@ void drawSceneWindowFast() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 void drawAlienFaceScene(float t) {
 
     //rectangle that fills the whole screen, act as background.
